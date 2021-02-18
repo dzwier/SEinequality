@@ -377,16 +377,16 @@ summary {
 
 <div id="social-inequality-in-shadow-education-the-role-of-high-stakes-testing" class="section level1">
 <h1>Social inequality in shadow education: The role of high-stakes testing</h1>
-<p>Replication files to the article Zwier, D., Geven, S., &amp; van de Werfhorst, H. G. (2021). Social inequality in shadow education: The role of high-stakes testing. International Journal of Comparative Sociology. <a href="https://doi.org/10.1177/0020715220984500" class="uri">https://doi.org/10.1177/0020715220984500</a></p>
-<p>To replicate the results presented in the paper, clone this repository or download and upack this zip-archive and run the code. Before you run the code, you have to download the PISA 2012 (a) “Student questionnaire data file” and (b) “School questionnaire data file” <a href="https://www.oecd.org/pisa/data/pisa2012database-downloadabledata.htm">here</a>.</p>
+<p>Replication files to Zwier, D., Geven, S., &amp; van de Werfhorst, H. G. (2021). Social inequality in shadow education: The role of high-stakes testing. International Journal of Comparative Sociology. <a href="https://doi.org/10.1177/0020715220984500" class="uri">https://doi.org/10.1177/0020715220984500</a></p>
 <div id="follow-these-steps-to-replicate-the-results" class="section level3">
 <h3>Follow these steps to replicate the results:</h3>
 <ol style="list-style-type: decimal">
-<li>Clone github repository or unzip “SEinequality.zip”</li>
-<li>Store the PISA 2012 data in Stata (.dta) format in <a href="/01_data">01_data</a>.Rename the student questionnaire data to “PISA2012_student.dta” and the school questionnaire to “PISA2012_school.dta”.</li>
-<li>Customize the path for the global macro “dir” and run the do-file <a href="MASTER.do">MASTER.do</a>. This do-file will run the do-files <a href="01_dataprep.do">01_dataprep.do</a> and <a href="02_analysis.do">02_analysis.do</a>.</li>
-<li>Robustness checks that are reported on in the article can be found in “03_robustness.do”.</li>
+<li>Clone this github repository or download and unzip “SEinequality.zip”.</li>
+<li>Download the PISA 2012 (a) “Student questionnaire data file” and (b) “School questionnaire data file” <a href="https://www.oecd.org/pisa/data/pisa2012database-downloadabledata.htm">here</a>.</li>
+<li>Save the PISA 2012 data in Stata (.dta) format in <a href="/01_data">01_data</a>. Rename the student questionnaire data to “PISA2012_student.dta” and the school questionnaire to “PISA2012_school.dta”.</li>
+<li>Customize the path for the global macro “dir” in <a href="MASTER.do">MASTER.do</a> (line 19) and run this do-file. This do-file will run the do-files <a href="01_dataprep.do">01_dataprep.do</a> and <a href="02_analysis.do">02_analysis.do</a>. Output will be exported to <a href="/03_figures">03_figures</a> and <a href="/04_tables">04_tables</a>.</li>
 </ol>
+<p>Robustness checks that are reported on in the article can be found in <a href="03_robustness.do">03_robustness.do</a>.</p>
 </div>
 </div>
 
