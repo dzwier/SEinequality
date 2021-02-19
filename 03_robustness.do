@@ -1,5 +1,5 @@
 *==============================================================================*
-*       		Shadow education III: robustness       				   		   *
+* Shadow education III: main robustness checks 
 /*=============================================================================*
 *-------------------------------------------------------------------------------
  Project: Zwier, D., Geven, S., & van de Werfhorst, H.G. (2021). Social inequality 
@@ -8,15 +8,14 @@
  
  
  Data: The Programme for International Student Assessment (PISA) 2012 
- Last edited 19-11-2020
  Stata version: 16.1
 *-------------------------------------------------------------------------------
 	
 	0. Set paths and install ados
 	1. Robustness checks
-	A. Analysis intensity (pseudo-)interval variables
-	B. Components SES
-	C. Outlier analysis
+		A. Analysis intensity (pseudo-)interval variables
+		B. Components SES
+		C. Outlier analysis
 
 *==============================================================================*/
 * 0. Set paths and install ados                    				  		   	   *
@@ -139,32 +138,15 @@
 		est store mfix_`var'
 }
 
-*** Export results
-	// Define titles tables
-	local titlelist "out-of-school-time lessons in mathematics" ///
-		"out-of-school-time lessons in language" "personal tutor" ///
-		"commercial company lessons"
-	
-	// Display all tables with esttab
+*** Display results
 	foreach var in S_OSLmath S_OSLlang S_PT S_CC {
-		local i = `i'+1
-		local dv : word `i' of "`titlelist'"
-
-		esttab m0_`var' m1_`var' m2_`var' m3_`var' m4_`var' mfix_`var', ///
-			b(%5.3f) se(%5.3f) nogap nobase nomtitle label ///
-			bic(%10.1f) scalars("ll Log likelihood") sfmt(%10.1f)  ///
-			transform(#*: exp(2*@) 2*exp(2*@)) ///
-			equations(2:3:3:3:3:., 3:4:4:4:4:2, 4:5:5:5:5:3, .:2:2:2:2:.) ///	
-			eqlabels("" "var(country)" "var(school)" "var(residual)" "var(ses)", none) ///
-			indicate(country FE = *.n_CNT) ///
-			title("Table XXX. Results multilevel regression models `dv'.") 	///
-			refcat(gender "\i Fixed part \i0" ///
-				1.immig "Immigrant background (\i ref. = native \i0)" ///
-				#1:_cons "Random part", nolabel) ///
-			star(+ 0.10 * 0.05 ** 0.01 *** 0.001) ///
-			modelwidth(4) interaction(" * ") replace
+		esttab m0_`var' m1_`var' m2_`var' m4_`var' mfix_`var', ///
+			b(%5.2f) se(%5.2f) obslast label ///
+			scalars("ll Log likelihood") sfmt(%10.1f) nogap nobase nomtitle  ///
+			transform(ln*: exp(2*@) 2*exp(2*@)) ///
+			star(+ 0.10 * 0.05 ** 0.01 *** 0.001) indicate(country FE = *.n_CNT)
 	}
-	
+
 * ------------------------------------------------------------------------------
 *  B. Components SES 
 * ------------------------------------------------------------------------------

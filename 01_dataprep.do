@@ -1,5 +1,5 @@
 *==============================================================================*
-*       Shadow education I: data preparation + descriptive statistics          *
+* Shadow education I: data preparation 
 /*=============================================================================*
 *-------------------------------------------------------------------------------
  Project: Zwier, D., Geven, S., & van de Werfhorst, H.G. (2021). Social inequality 
@@ -8,7 +8,6 @@
  
  
  Data: The Programme for International Student Assessment (PISA) 2012 
- Last edited 19-11-2020
  Stata version: 16.1
 *-------------------------------------------------------------------------------
 

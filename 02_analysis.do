@@ -1,5 +1,5 @@
 *==============================================================================*
-*       		Shadow education II: main analysis       				   	   *
+* Shadow education II: main analyses       				
 /*=============================================================================*
 *-------------------------------------------------------------------------------
  Project: Zwier, D., Geven, S., & van de Werfhorst, H.G. (2021). Social inequality 
@@ -8,14 +8,13 @@
  
  
  Data: The Programme for International Student Assessment (PISA) 2012 
- Last edited 19-11-2020
  Stata version: 16.1
 *-------------------------------------------------------------------------------
 	
 	1. Open data
 	2. Export Figure 1: Descriptive statistics SE 
 	3. Export Table 1: Descriptive statistics of student-level variables
-	4. Estimate models 
+	4. Estimate main models 
 	5. Export Table 3-6: multilevel regression results (LPMs)
 	6. Export Figure 2: AMEs SES##central exams
 
@@ -146,14 +145,6 @@
 		di "School ICC:" (`var_s'/(`var_c'+`var_s'+`var_e'))*100
 
 		// M1: Random intercept and Random slope models
-		/*
-		mixed 	`var' $controls ses [pw=wwgt54] 			///
-				|| CNT: || SCHOOLID:, pw(W_FSCHWT)  
-
-		mixed 	`var' $controls ses HST [pw=wwgt54] 		///
-				|| CNT: || SCHOOLID:, pw(W_FSCHWT)  
-		*/
-		
 		mixed 	`var' $controls ses HST [pw=wwgt54] 		///
 				|| CNT: ses || SCHOOLID:, pw(W_FSCHWT)  
 		est store m1_`var'
@@ -183,15 +174,6 @@
 				|| unique_schoolid:, pw(W_FSCHWT)
 		est store mfix_`var'
 }
-
-*** Display models 	
-	foreach var in D_OSLmath D_OSLlang D_PT D_CC {
-		esttab m0_`var' m1_`var' m2_`var' m4_`var' mfix_`var', ///
-			b(%5.3f) se(%5.3f) obslast label ///
-			scalars("ll Log likelihood") sfmt(%10.1f) nogap nobase nomtitle  ///
-			transform(ln*: exp(2*@) 2*exp(2*@)) ///
-			star(+ 0.10 * 0.05 ** 0.01 *** 0.001) indicate(country FE = *.n_CNT)
-	}
 
 *==============================================================================*/
 * 5. Export Table 3-6: multilevel regression results (LPMs)	   			   	   *

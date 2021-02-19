@@ -1,13 +1,13 @@
 *==============================================================================*
-*       Shadow education : master do-file          							   *
+* Shadow education : master do-file          							
 /*=============================================================================*
 *-------------------------------------------------------------------------------
  Project: Zwier, D., Geven, S., & van de Werfhorst, H.G. (2021). Social inequality 
- in shadow education: The role of high-stakes testing.
+ in shadow education: The role of high-stakes testing. 
+ https://doi.org/10.1177/0020715220984500
  
  
  Data: The Programme for International Student Assessment (PISA) 2012 
- Last edited 19-11-2020
  Stata version: 16.1
 *-------------------------------------------------------------------------------
 	 
