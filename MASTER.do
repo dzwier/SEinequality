@@ -52,7 +52,7 @@
 * 1. Run do-files       
 *==============================================================================*
 
-	do "$dofiles/01_dataprep.do"
-	do "$dofiles/01_analysis.do"
+	do "$dir/01_dataprep.do"
+	do "$dir/01_analysis.do"
 
 
